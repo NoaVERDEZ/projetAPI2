@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion / Inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            background-image: url('file:///C:/Users/formation/Documents/motif.png');
+            background-size: cover; /* Pour s'assurer que l'image couvre toute la fenêtre */
+            background-position: center; /* Pour centrer l'image */
+            background-repeat: repeat; /* Répétition du motif sur toute la surface */
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            border: 2px solid #ff7f50;
+        }
+        h2 {
+            margin-bottom: 30px;
+            color: #333333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #ff6347;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .btn:hover {
+            background-color: #ff4500;
+        }
+        .toggle-btn {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+        .toggle-btn:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="form-title">Connexion</h2>
+        <form id="login-form" action="/login" method="POST">
+            <div class="form-group">
+                <label for="login-email">E-mail :</label>
+                <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Mot de passe :</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button class="btn" type="submit">Se connecter</button>
+            <p><a href="#" id="toggle-form" class="toggle-btn">Pas de compte ? S'inscrire</a></p>
+        </form>
+
+        <!-- Formulaire d'inscription (initialement caché) -->
+        <form id="register-form" style="display: none;">
+            <h2>Inscription</h2>
+            <div class="form-group">
+                <label for="register-email">E-mail :</label>
+                <input type="email" id="register-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Mot de passe :</label>
+                <input type="password" id="register-password" name="password" required>
+            </div>
+            <button class="btn" type="submit">S'inscrire</button>
+            <p><a href="#" id="back-to-login" class="toggle-btn">Retourner à la connexion</a></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('toggle-form').addEventListener('click', function() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('form-title').style.display = 'none';
+        });
+
+        document.getElementById('back-to-login').addEventListener('click', function() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('form-title').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
